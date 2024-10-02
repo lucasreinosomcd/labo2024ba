@@ -1,0 +1,24 @@
+{
+    "id": "28A0EA85",
+    "path": "~/labo2024ba/src/workflows/501_run_workflow_conceptual.r",
+    "project_path": "src/workflows/501_run_workflow_conceptual.r",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1727838499986.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1727837987,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1727837987,
+    "read_only": false,
+    "read_only_alternatives": []
+}
