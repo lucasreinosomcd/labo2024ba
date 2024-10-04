@@ -1,0 +1,26 @@
+{
+    "id": "85262732",
+    "path": "~/labo2024ba/src/workflows/519_workflow_base_f202109_conc.r",
+    "project_path": "src/workflows/519_workflow_base_f202109_conc.r",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": true,
+    "created": 1727838502770.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "190,11",
+        "scrollLine": "186"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1727838720,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1727842106795,
+    "read_only": false,
+    "read_only_alternatives": []
+}
