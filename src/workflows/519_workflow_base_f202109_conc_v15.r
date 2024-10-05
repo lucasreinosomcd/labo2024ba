@@ -187,9 +187,9 @@ FErf_attributes_base <- function( pinputexps, ratio, desvio)
   # parametros para que LightGBM se comporte como Random Forest
   param_local$lgb_param <- list(
     # parametros que se pueden cambiar
-    num_iterations = 20,
-    num_leaves  = 30,
-    min_data_in_leaf = 800,
+    num_iterations = 10,
+    num_leaves  = 16,
+    min_data_in_leaf = 100,
     feature_fraction_bynode  = 0.2,
     
     # para que LightGBM emule Random Forest
@@ -439,7 +439,7 @@ wf_septiembre <- function( pnombrewf )
   ts9 <- TS_strategy_base9()
   ht <- HT_tuning_base()
   
-  fm <- FM_final_models_lightgbm( c(ht, ts9), ranks=c(1), qsemillas=5 )
+  fm <- FM_final_models_lightgbm( c(ht, ts9), ranks=c(1), qsemillas=20 )
   SC_scoring( c(fm, ts9) )
   KA_evaluate_kaggle()
   
