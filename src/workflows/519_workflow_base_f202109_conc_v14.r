@@ -182,14 +182,14 @@ FErf_attributes_base <- function( pinputexps, ratio, desvio)
   
   # Parametros de un LightGBM que se genera para estimar la column importance
   param_local$train$clase01_valor1 <- c( "BAJA+2", "BAJA+1")
-  param_local$train$training <- c( 202101, 202102)
+  param_local$train$training <- c( 202101, 202102, 202103, 202104)
   
   # parametros para que LightGBM se comporte como Random Forest
   param_local$lgb_param <- list(
     # parametros que se pueden cambiar
-    num_iterations = 8,
-    num_leaves  = 10,
-    min_data_in_leaf = 40,
+    num_iterations = 20,
+    num_leaves  = 30,
+    min_data_in_leaf = 800,
     feature_fraction_bynode  = 0.2,
     
     # para que LightGBM emule Random Forest
@@ -274,15 +274,12 @@ TS_strategy_base9 <- function( pinputexps )
   param_local$final_train$clase_minoritaria <- c( "BAJA+1", "BAJA+2")
   param_local$final_train$training <- c(202107, 202106, 202105, 202104, 202103, 202102,
                                         202101, 202012, 202011, 202010, 202009, 202008, 
-                                        202007, 202006, 202005, 202004, 202003, 202002, 
-                                        202001, 201912, 201911, 201910, 201909, 201908,
-                                        201907, 201906, 201905, 201904, 201903, 201902, 201901)
+                                        202007, 202006, 202005, 202004, 202003, 202002, 202001)
   
   
   param_local$train$training <- c(202105, 202104, 202103, 202102, 202101,
-                                  202012, 202011, 202010, 202009, 202008, 202007, 202006, 
-                                  202005, 202004, 202003, 202002, 202001, 201912, 201911, 
-                                  201910, 201909, 201908, 201907, 201906, 201905, 201904, 201903)
+                                  202012, 202011, 202010, 202009, 202008, 
+                                  202007, 202006, 202005, 202004, 202003)
   param_local$train$validation <- c(202106)
   param_local$train$testing <- c(202107)
   
