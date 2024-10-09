@@ -182,15 +182,15 @@ FErf_attributes_base <- function( pinputexps, ratio, desvio)
   
   # Parametros de un LightGBM que se genera para estimar la column importance
   param_local$train$clase01_valor1 <- c( "BAJA+2", "BAJA+1")
-  param_local$train$training <- c( 202101, 202102, 202103)
+  param_local$train$training <- c(202007, 202008, 202009, 202010, 202011, 202012, 202101, 202102, 202103)
   
   # parametros para que LightGBM se comporte como Random Forest
   param_local$lgb_param <- list(
     # parametros que se pueden cambiar
-    num_iterations = 14,
-    num_leaves  = 18,
-    min_data_in_leaf = 800,
-    feature_fraction_bynode  = 0.3,
+    num_iterations = 20,
+    num_leaves  = 12,
+    min_data_in_leaf = 1000,
+    feature_fraction_bynode  = 0.2,
     
     # para que LightGBM emule Random Forest
     boosting = "rf",
@@ -437,7 +437,7 @@ wf_septiembre <- function( pnombrewf )
   ts9 <- TS_strategy_base9()
   ht <- HT_tuning_base()
   
-  fm <- FM_final_models_lightgbm( c(ht, ts9), ranks=c(1), qsemillas=5 )
+  fm <- FM_final_models_lightgbm( c(ht, ts9), ranks=c(1), qsemillas=20 )
   SC_scoring( c(fm, ts9) )
   KA_evaluate_kaggle()
   
