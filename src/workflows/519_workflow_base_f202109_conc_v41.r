@@ -173,60 +173,6 @@ FEhist_base <- function( pinputexps)
 #  atencion, parmetros para generar variables, NO para buen modelo
 #  azaroso, utiliza semilla
 
-#FErf_attributes_base <- function( pinputexps, ratio, desvio)
-{
-  if( -1 == (param_local <- exp_init())$resultado ) return( 0 )# linea fija
-  
-  
-  param_local$meta$script <- "/src/wf-etapas/z1311_FE_rfatributes.r"
-  
-  # Parametros de un LightGBM que se genera para estimar la column importance
-  param_local$train$clase01_valor1 <- c( "BAJA+2", "BAJA+1")
-  param_local$train$training <- c( 202101, 202102, 202103, 202104)
-  
-  # parametros para que LightGBM se comporte como Random Forest
-  param_local$lgb_param <- list(
-    # parametros que se pueden cambiar
-    num_iterations = 8,
-    num_leaves  = 10,
-    min_data_in_leaf = 40,
-    feature_fraction_bynode  = 0.2,
-    
-    # para que LightGBM emule Random Forest
-    boosting = "rf",
-    bagging_fraction = ( 1.0 - 1.0/exp(1.0) ),
-    bagging_freq = 1.0,
-    feature_fraction = 1.0,
-    
-    # genericos de LightGBM
-    max_bin = 31L,
-    objective = "binary",
-    first_metric_only = TRUE,
-    boost_from_average = TRUE,
-    feature_pre_filter = FALSE,
-    force_row_wise = TRUE,
-    verbosity = -100,
-    max_depth = -1L,
-    min_gain_to_split = 0.0,
-    min_sum_hessian_in_leaf = 0.001,
-    lambda_l1 = 0.0,
-    lambda_l2 = 0.0,
-    
-    pos_bagging_fraction = 1.0,
-    neg_bagging_fraction = 1.0,
-    is_unbalance = FALSE,
-    scale_pos_weight = 1.0,
-    
-    drop_rate = 0.1,
-    max_drop = 50,
-    skip_drop = 0.5,
-    
-    extra_trees = FALSE
-  )
-  
-  
-  return( exp_correr_script( param_local ) ) # linea fija
-}
 #------------------------------------------------------------------------------
 # Canaritos Asesinos   Baseline
 #  azaroso, utiliza semilla
@@ -273,13 +219,11 @@ TS_strategy_base9 <- function( pinputexps )
   param_local$final_train$undersampling <- 1.0
   param_local$final_train$clase_minoritaria <- c( "BAJA+1", "BAJA+2")
   param_local$final_train$training <- c(202107, 202106, 202105, 202104, 202103, 202102,
-                                        202101, 202012, 202011, 202010, 202009, 202008, 
-                                        202007, 202006, 202005, 202004, 202003, 202002, 202001)
+                                        202101, 202012, 202011)
   
   
   param_local$train$training <- c(202105, 202104, 202103, 202102, 202101,
-                                  202012, 202011, 202010, 202009, 202008, 
-                                  202007, 202006, 202005, 202004, 202003)
+                                  202012, 202011, 202010, 202009)
   param_local$train$validation <- c(202106)
   param_local$train$testing <- c(202107)
   
@@ -439,7 +383,7 @@ wf_septiembre <- function( pnombrewf )
   ts9 <- TS_strategy_base9()
   ht <- HT_tuning_base()
   
-  fm <- FM_final_models_lightgbm( c(ht, ts9), ranks=c(1), qsemillas=5 )
+  fm <- FM_final_models_lightgbm( c(ht, ts9), ranks=c(1), qsemillas=20 )
   SC_scoring( c(fm, ts9) )
   KA_evaluate_kaggle()
   
