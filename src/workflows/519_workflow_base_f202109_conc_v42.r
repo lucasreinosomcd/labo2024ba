@@ -173,7 +173,7 @@ FEhist_base <- function( pinputexps)
 #  atencion, parmetros para generar variables, NO para buen modelo
 #  azaroso, utiliza semilla
 
-##FErf_attributes_base <- function( pinputexps, ratio, desvio)
+FErf_attributes_base <- function( pinputexps, ratio, desvio)
 {
   if( -1 == (param_local <- exp_init())$resultado ) return( 0 )# linea fija
   
@@ -182,15 +182,15 @@ FEhist_base <- function( pinputexps)
   
   # Parametros de un LightGBM que se genera para estimar la column importance
   param_local$train$clase01_valor1 <- c( "BAJA+2", "BAJA+1")
-  param_local$train$training <- c( 202101, 202102, 202103)
+  param_local$train$training <- c( )
   
   # parametros para que LightGBM se comporte como Random Forest
   param_local$lgb_param <- list(
     # parametros que se pueden cambiar
-    num_iterations = 14,
-    num_leaves  = 18,
-    min_data_in_leaf = 800,
-    feature_fraction_bynode  = 0.3,
+    num_iterations = 20,
+    num_leaves  = 6,
+    min_data_in_leaf = 1000,
+    feature_fraction_bynode  = 0.2,
     
     # para que LightGBM emule Random Forest
     boosting = "rf",
@@ -201,8 +201,8 @@ FEhist_base <- function( pinputexps)
     # genericos de LightGBM
     max_bin = 31L,
     objective = "binary",
-    first_metric_only = TRUE,
-    boost_from_average = TRUE,
+    first_metric_only = FALSE,
+    boost_from_average = FALSE,
     feature_pre_filter = FALSE,
     force_row_wise = TRUE,
     verbosity = -100,
